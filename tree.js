@@ -74,7 +74,7 @@ class Tree {
         temp = temp.right;
       }
     }
-    // For leaf deletion, check if both right and left are null
+    // Leaf deletion
     if (temp.left === null && temp.right === null) {
       if (prev.data > temp.data) {
         prev.left = null;
@@ -82,8 +82,25 @@ class Tree {
       else {
         prev.right = null;
       }
+      return;
     }
-    // For single child deletion, check if either right or left child is null, and link parent to opposite side's grandchild
+    // Single child deletion
+    if (temp.left !== null || temp.right !== null) {
+      let childBranch = null;
+      if (temp.left !== null) {
+        childBranch = temp.left;
+      }
+      else {
+        childBranch = temp.right;
+      }
+      console.log(childBranch)
+      if (prev.data > temp.data) {
+        prev.left = childBranch;
+      }
+      else {
+        prev.right = childBranch;
+      }
+    }
     // Do the same in #2, but take the minimum of the deleted node's children
   }
 }
