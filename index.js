@@ -1,6 +1,6 @@
 import Tree from './tree.js';
 
-let tree = new Tree([])
+let tree = new Tree([1, 4, 5, 6, 7, 8])
 let start = 0;
 let end = tree.array.length - 1;
 
@@ -18,6 +18,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 };
-
-tree.insert(5);
+tree.delete(8)
 prettyPrint(tree.root);
