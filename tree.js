@@ -82,7 +82,21 @@ class Tree {
       else {
         prev.right = null;
       }
-      return;
+      return this.root;
+    }
+    // Double child deletion
+    if (temp.left !== null && temp.right !== null) {
+      // Search minimum value of a tree
+      let min = function TreeMin(root) {
+        if (root.left !== null) {
+          TreeMin(root.left);
+        }
+        return root.data;
+      }
+      temp.data = min(temp.right);
+      // Delete duplicate from right subtree
+      temp.right = null;
+      return this.root;
     }
     // Single child deletion
     if (temp.left !== null || temp.right !== null) {
@@ -93,15 +107,15 @@ class Tree {
       else {
         childBranch = temp.right;
       }
-      console.log(childBranch)
       if (prev.data > temp.data) {
         prev.left = childBranch;
       }
       else {
         prev.right = childBranch;
       }
+      return this.root;
     }
-    // Do the same in #2, but take the minimum of the deleted node's children
+    return false;
   }
 }
 
