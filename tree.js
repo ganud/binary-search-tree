@@ -10,8 +10,8 @@ class Tree {
     if (start > end) {
       return null;
     }
-    let mid = Math.floor((start + end) / 2)
-    let root = new Node(this.array[mid]);
+    const mid = Math.floor((start + end) / 2);
+    const root = new Node(this.array[mid]);
 
     root.left = this.buildTree(array, start, mid - 1);
     root.right = this.buildTree(array, mid + 1, end);
@@ -21,7 +21,7 @@ class Tree {
   }
 
   insert(value) {
-    let newNode = new Node(value);
+    const newNode = new Node(value);
     // if BST is empty set it as newNode
     if (this.root === null) {
       this.root = newNode;
@@ -34,8 +34,7 @@ class Tree {
       if (value < temp.data) {
         prev = temp;
         temp = temp.left;
-      }
-      else {
+      } else {
         prev = temp;
         temp = temp.right;
       }
@@ -51,8 +50,7 @@ class Tree {
       if (temp.data === value) { return temp; }
       if (value < temp.data) {
         temp = temp.left;
-      }
-      else {
+      } else {
         temp = temp.right;
       }
     }
@@ -68,8 +66,7 @@ class Tree {
       if (value < temp.data) {
         prev = temp;
         temp = temp.left;
-      }
-      else {
+      } else {
         prev = temp;
         temp = temp.right;
       }
@@ -78,8 +75,7 @@ class Tree {
     if (temp.left === null && temp.right === null) {
       if (prev.data > temp.data) {
         prev.left = null;
-      }
-      else {
+      } else {
         prev.right = null;
       }
       return this.root;
@@ -87,12 +83,12 @@ class Tree {
     // Double child deletion
     if (temp.left !== null && temp.right !== null) {
       // Search minimum value of a tree
-      let min = function TreeMin(root) {
+      const min = function TreeMin(root) {
         if (root.left !== null) {
           TreeMin(root.left);
         }
         return root.data;
-      }
+      };
       temp.data = min(temp.right);
       // Delete duplicate from right subtree
       temp.right = null;
@@ -103,19 +99,32 @@ class Tree {
       let childBranch = null;
       if (temp.left !== null) {
         childBranch = temp.left;
-      }
-      else {
+      } else {
         childBranch = temp.right;
       }
       if (prev.data > temp.data) {
         prev.left = childBranch;
-      }
-      else {
+      } else {
         prev.right = childBranch;
       }
       return this.root;
     }
     return false;
+  }
+
+  levelorder(root = this.root) {
+    if (root === null) return;
+    const traversed = [];
+    const queue = [root];
+    while (queue.length > 0) {
+      const current = queue[0];
+      traversed.push(current.data);
+      if (current.left !== null) { queue.push(current.left); }
+      if (current.right !== null) { queue.push(current.right); }
+      queue.shift();
+    }
+
+    return traversed;
   }
 }
 

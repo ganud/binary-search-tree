@@ -18,5 +18,7 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
     prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
   }
 };
-tree.delete(4)
+
+
+console.log(tree.levelorder());
 prettyPrint(tree.root);
