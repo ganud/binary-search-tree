@@ -20,5 +20,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 
-console.log(tree.levelorder());
+console.log(tree.postOrder());
 prettyPrint(tree.root);

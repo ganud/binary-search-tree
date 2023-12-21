@@ -126,6 +126,36 @@ class Tree {
 
     return traversed;
   }
+
+  inOrder(root = this.root, traversed = []) {
+    if (root === null) return;
+
+    this.inOrder(root.left, traversed);
+    traversed.push(root.data);
+    this.inOrder(root.right, traversed);
+
+    return traversed;
+  }
+
+  preOrder(root = this.root, traversed = []) {
+    if (root === null) return;
+
+    traversed.push(root.data);
+    this.preOrder(root.left, traversed);
+    this.preOrder(root.right, traversed);
+
+    return traversed;
+  }
+
+  postOrder(root = this.root, traversed = []) {
+    if (root === null) return;
+
+    this.postOrder(root.left, traversed);
+    this.postOrder(root.right, traversed);
+    traversed.push(root.data);
+
+    return traversed;
+  }
 }
 
 export default Tree;
