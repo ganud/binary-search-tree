@@ -20,5 +20,6 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 
-console.log(tree.postOrder());
+let three = tree.find(3)
+console.log(tree.depth(three))
 prettyPrint(tree.root);

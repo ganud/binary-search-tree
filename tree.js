@@ -116,12 +116,13 @@ class Tree {
     if (root === null) return;
     const traversed = [];
     const queue = [root];
+    // While there are nodes left to visit
     while (queue.length > 0) {
-      const current = queue[0];
-      traversed.push(current.data);
-      if (current.left !== null) { queue.push(current.left); }
+      const current = queue[0]; // Get the most recent element of queue
+      traversed.push(current.data); // Mark node as explored
+      if (current.left !== null) { queue.push(current.left); } // Add possible explorations to queue
       if (current.right !== null) { queue.push(current.right); }
-      queue.shift();
+      queue.shift(); // Remove the explored node from queue
     }
 
     return traversed;
@@ -155,6 +156,29 @@ class Tree {
     traversed.push(root.data);
 
     return traversed;
+  }
+
+  height(node) {
+    if (node === null) { return -1; }
+    // Get heights of left and right bsts
+    const leftHeight = this.height(node.left);
+    const rightHeight = this.height(node.right);
+    // Greater of the two heights
+    return Math.max(leftHeight + 1, rightHeight + 1);
+  }
+
+  depth(node) {
+    let temp = this.root;
+    let distance = 0;
+    while (temp !== null) {
+      if (temp.data === node.data) { return distance; }
+      if (node.data < temp.data) {
+        temp = temp.left;
+      } else {
+        temp = temp.right;
+      }
+      distance++;
+    }
   }
 }
 
