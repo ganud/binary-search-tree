@@ -180,6 +180,17 @@ class Tree {
       distance++;
     }
   }
+
+  isBalanced(node = this.root) {
+    // Get heights of left and right bsts
+    const leftHeight = this.height(node.left);
+    const rightHeight = this.height(node.right);
+    // Greater of the two heights
+    if (Math.abs(leftHeight - rightHeight) > 1) {
+      return false;
+    }
+    return true;
+  }
 }
 
 export default Tree;

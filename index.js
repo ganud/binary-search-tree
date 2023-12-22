@@ -20,6 +20,5 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 
-let three = tree.find(3)
-console.log(tree.depth(three))
+console.log(tree.isBalanced())
 prettyPrint(tree.root);
