@@ -1,10 +1,6 @@
 import Tree from './tree.js';
 
 let tree = new Tree([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
-let start = 0;
-let end = tree.array.length - 1;
-
-let BST = tree.buildTree(tree.array, start, end)
 
 const prettyPrint = (node, prefix = "", isLeft = true) => {
   if (node === null) {

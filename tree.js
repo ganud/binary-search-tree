@@ -2,8 +2,7 @@ import Node from './node.js';
 
 class Tree {
   constructor(array) {
-    this.array = array;
-    this.root = this.buildTree(array, 0, array.length);
+    this.root = this.buildTree(array, 0, array.length - 1);
   }
 
   buildTree(array, start, end) {
