@@ -7,6 +7,7 @@ class Tree {
   }
 
   buildTree(array, start, end) {
+    array.sort(function(a, b){return a - b})
     if (start > end) {
       return null;
     }
@@ -17,11 +18,12 @@ class Tree {
     root.right = this.buildTree(array, mid + 1, end);
 
     this.root = root; // Update tree object attribute
-    return root;
+    return this.root;
   }
 
   insert(value) {
     const newNode = new Node(value);
+    this.array.push(value) // Neccesary, else insertion shows up as null for rebalancing
     // if BST is empty set it as newNode
     if (this.root === null) {
       this.root = newNode;
@@ -191,6 +193,13 @@ class Tree {
     }
     return true;
   }
+
+  rebalance(root = this.root) {
+    if (root === null) return;
+    let inOrder = this.inOrder(root);
+    root = this.buildTree(inOrder, 0, inOrder.length - 1)
+  }
+
 }
 
 export default Tree;
