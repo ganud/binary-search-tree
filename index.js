@@ -19,13 +19,15 @@ const prettyPrint = (node, prefix = "", isLeft = true) => {
   }
 };
 
+tree.insert(426);
+
 tree.insert(420);
 tree.insert(421);
-tree.insert(426);
 tree.insert(427);
+tree.insert(425)
 
-tree.insert(425);
 
 tree.rebalance()
+console.log(tree.isBalanced())
 
 prettyPrint(tree.root);

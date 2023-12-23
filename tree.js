@@ -3,7 +3,7 @@ import Node from './node.js';
 class Tree {
   constructor(array) {
     this.array = array;
-    this.root = null;
+    this.root = this.buildTree(array, 0, array.length);
   }
 
   buildTree(array, start, end) {
@@ -12,7 +12,7 @@ class Tree {
       return null;
     }
     const mid = Math.floor((start + end) / 2);
-    const root = new Node(this.array[mid]);
+    const root = new Node(array[mid]);
 
     root.left = this.buildTree(array, start, mid - 1);
     root.right = this.buildTree(array, mid + 1, end);
@@ -23,7 +23,6 @@ class Tree {
 
   insert(value) {
     const newNode = new Node(value);
-    this.array.push(value) // Neccesary, else insertion shows up as null for rebalancing
     // if BST is empty set it as newNode
     if (this.root === null) {
       this.root = newNode;
