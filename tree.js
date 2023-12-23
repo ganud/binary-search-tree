@@ -6,7 +6,7 @@ class Tree {
   }
 
   buildTree(array, start, end) {
-    array.sort(function(a, b){return a - b})
+    array.sort((a, b) => a - b);
     if (start > end) {
       return null;
     }
@@ -194,10 +194,9 @@ class Tree {
 
   rebalance(root = this.root) {
     if (root === null) return;
-    let inOrder = this.inOrder(root);
-    root = this.buildTree(inOrder, 0, inOrder.length - 1)
+    const inOrder = this.inOrder(root);
+    root = this.buildTree(inOrder, 0, inOrder.length - 1);
   }
-
 }
 
 export default Tree;
